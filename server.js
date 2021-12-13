@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
+const userRouter = require("./routes/user");
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.get("/healthcheck", (req, res) => {
 app.get("/", (req, res) => {
   return res.json("Hello World");
 });
+
+app.use("/user", userRouter);
 
 app.listen(process.env.PORT || 3001, () => {
   console.log("Server running on port 3001");
