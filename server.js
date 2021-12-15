@@ -4,6 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
 const userRouter = require("./routes/user");
+const postRouter = require("./routes/post");
 
 const app = express();
 
@@ -28,6 +29,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+
+app.use("/post", postRouter);
 
 app.listen(process.env.PORT || 3001, () => {
   console.log("Server running on port 3001");

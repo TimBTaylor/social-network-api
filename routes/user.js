@@ -65,7 +65,7 @@ router.post("/login", (req, res) => {
           return res.json("Wrong email/password combination");
         }
       } else {
-        return res.json("Wrong email/password combination");
+        return res.json("Email not found");
       }
     }
   );
