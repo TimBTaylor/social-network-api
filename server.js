@@ -5,6 +5,8 @@ const session = require("express-session");
 const cors = require("cors");
 const userRouter = require("./routes/user");
 const postRouter = require("./routes/post");
+const followingRouter = require("./routes/following");
+const notificationRouter = require("./routes/notification");
 
 const app = express();
 
@@ -31,6 +33,10 @@ app.get("/", (req, res) => {
 app.use("/user", userRouter);
 
 app.use("/post", postRouter);
+
+app.use("/following", followingRouter);
+
+app.use("/notification", notificationRouter);
 
 app.listen(process.env.PORT || 3001, () => {
   console.log("Server running on port 3001");
