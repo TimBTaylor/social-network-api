@@ -211,23 +211,210 @@ await axios({
     })
 ```
 
-# left off here
+### Add like to a post
 
-### Get all time entrys for a company
+`POST`
+
+- Body
+  `likesAmount, postID, postedByID, likedByID`
+- Example
+
+```
+await axios({
+      method: "post",
+      url: `https://localhost:3001/post/add-like`,
+      header: { "Content-Type": "application/json" },
+      data: {
+        likesAmount,
+        postID,
+        postedByID,
+        likedByID
+      },
+    })
+```
+
+### Remove like from a post
+
+`POST`
+
+- Body
+  `likesAmount, postID, postedByID, likedByID`
+- Example
+
+```
+await axios({
+      method: "post",
+      url: `https://localhost:3001/post/remove-like`,
+      header: { "Content-Type": "application/json" },
+      data: {
+        likesAmount,
+        postID,
+        postedByID,
+        likedByID
+      },
+    })
+```
+
+### Add retweet to a post
+
+`POST`
+
+- Body
+  `retweetsAmount, postID, postedByID, text, date, userName, userImage, postImage, retweet, originalPostedByID, originalPostedByName, originalPostedByImage, originalPostedByDate, originalPostID`
+- Example
+
+```
+await axios({
+      method: "post",
+      url: `https://localhost:3001/post/new-retweet`,
+      header: { "Content-Type": "application/json" },
+      data: {
+        retweetsAmount,
+        postID,
+        postedByID,
+        text,
+        date,
+        userName,
+        userImage,
+        postImage,
+        retweet,
+        originalPostedByID,
+        originalPostedByName,
+        originalPostedByImage,
+        originalPostedByDate,
+        originalPostID
+      },
+    })
+```
+
+### Remove retweet from a post
+
+`PUT`
+
+- Body
+  `retweetsAmount, postID, retweetedPostID`
+- Example
+
+```
+await axios({
+      method: "put",
+      url: `https://localhost:3001/post/remove-retweet`,
+      header: { "Content-Type": "application/json" },
+      data: {
+        retweetsAmount,
+        postID,
+        retweetedPostID
+      },
+    })
+```
+
+### Create notification
+
+`POST`
+
+- Body
+  `userForID, userFromID, userFromImage, text, viewed, postID, date, retweet`
+- Example
+
+```
+await axios({
+      method: "post",
+      url: `https://localhost:3001/notification/new-notification`,
+      header: { "Content-Type": "application/json" },
+      data: {
+        userForID,
+        userFromID,
+        userFromImage,
+        text,
+        viewed,
+        postID,
+        date,
+        retweet
+      },
+    })
+```
+
+### Get all notifications that are not viewed
 
 `GET`
 
 - Body
-  `companyNumber`
+  ``
 - Example
 
 ```
 await axios({
       method: "get",
-      url: `https://ecommersappbytim.herokuapp.com/cart/${userId}/delete-from-cart`,
+      url: `https://localhost:3001/notification/${userID}/not-viewed`,
+    })
+```
+
+### Get all notifications that are viewed
+
+`GET`
+
+- Body
+  ``
+- Example
+
+```
+await axios({
+      method: "get",
+      url: `https://localhost:3001/notification/${userID}/viewed`,
+    })
+```
+
+### View all notifications
+
+`PUT`
+
+- Body
+  ``
+- Example
+
+```
+await axios({
+      method: "get",
+      url: `https://localhost:3001/notification/${userID}/view-all`,
+    })
+```
+
+### Follow a user
+
+`post`
+
+- Body
+  `userID, followUserID`
+- Example
+
+```
+await axios({
+      method: "post",
+      url: `https://localhost:3001/following/user/follow`,
       header: { "Content-Type": "application/json" },
       data: {
-        companyNumber
+        userID,
+        followUserID
+      },
+    })
+```
+
+### Unfollow a user
+
+`post`
+
+- Body
+  `userID, followUserID`
+- Example
+
+```
+await axios({
+      method: "post",
+      url: `https://localhost:3001/following/user/unfollow`,
+      header: { "Content-Type": "application/json" },
+      data: {
+        userID,
+        followUserID
       },
     })
 ```
